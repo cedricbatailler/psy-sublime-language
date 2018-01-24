@@ -1,0 +1,19 @@
+%YAML 1.2
+---
+name: psy
+file_extensions:
+  - psy
+scope: source.psy
+contexts:
+  main:
+    - match: "#"
+      scope: punctuation.definition.comment
+      push:
+        - meta_scope: comment.line.psy
+        - match: \n
+          pop: true
+    - match: \b(if|fi)\b
+      scope: keyword.operator.logical
+    - match: (==|!=)
+      scope: keyword.operator.comparison.psy
+      
