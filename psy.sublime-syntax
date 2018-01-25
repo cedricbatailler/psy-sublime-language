@@ -10,6 +10,7 @@ contexts:
     - include: comments
     - include: strings
     - include: keywords
+    - include: constants
 
   comments:
     - match: "#"
@@ -43,4 +44,9 @@ contexts:
       scope: keyword.operator.logical
     - match: (==|!=)
       scope: keyword.operator.comparison.psy
-      
+    - match: ( set )
+      scope: keyword.operator.assignment.psy
+
+  constants:
+    - match: \b(BLOCKNAME|BLOCKNUMBER|RT|STATUS)\b
+      scope: support.constant.misc.psy
