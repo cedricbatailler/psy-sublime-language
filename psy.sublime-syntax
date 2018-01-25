@@ -4,14 +4,41 @@ name: psy
 file_extensions:
   - psy
 scope: source.psy
+
 contexts:
   main:
+    - include: comments
+    - include: strings
+    - include: keywords
+
+  comments:
     - match: "#"
       scope: punctuation.definition.comment
       push:
         - meta_scope: comment.line.psy
         - match: \n
           pop: true
+
+  strings:
+    - match: '"'
+      scope: punctuation.definition.string.begin.psy
+      push:
+        - meta_scope: string.quoted.double.psy
+        - match: \\.
+          scope: constant.character.escape.psy
+        - match: '"'
+          scope: punctuation.definition.string.end.psy
+          pop: true
+    - match: "'"
+      scope: punctuation.definition.string.begin.psy
+      push:
+        - meta_scope: string.quoted.single.psy
+        - match: \\.
+          scope: constant.character.escape.psy
+        - match: "'"
+          scope: punctuation.definition.string.end.psy
+
+  keywords:
     - match: \b(if|fi)\b
       scope: keyword.operator.logical
     - match: (==|!=)
