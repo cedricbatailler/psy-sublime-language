@@ -11,6 +11,7 @@ contexts:
     - include: strings
     - include: keywords
     - include: constants
+    - include: builtin-functions
 
   comments:
     - match: "#"
@@ -44,9 +45,18 @@ contexts:
       scope: keyword.operator.logical
     - match: (==|!=)
       scope: keyword.operator.comparison.psy
-    - match: ( set )
+    - match: \b(set)\b
       scope: keyword.operator.assignment.psy
 
   constants:
     - match: \b(BLOCKNAME|BLOCKNUMBER|RT|STATUS)\b
       scope: support.constant.misc.psy
+    - match: \b(CORRECT)\b
+      scope: support.constant.language.psy
+    - match: \b([0-9]*)\b
+      scope: constant.numeric.integer.decimal.psy
+
+  builtin-functions:
+    - match: \b(block|clear|delay|end|blockorder|fonts|keys|part|readkey|show text|table|task|tasklist)\b
+      captures:
+        1: support.function.psy
