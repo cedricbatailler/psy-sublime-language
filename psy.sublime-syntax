@@ -57,6 +57,6 @@ contexts:
       scope: constant.numeric.integer.decimal.psy
 
   builtin-functions:
-    - match: \b(block|clear|delay|end|blockorder|fonts|keys|part|readkey|show text|table|task|tasklist)\b
+    - match: \b(block|clear|delay|end|blockorder|fonts|keys|part|readkey|save|show text|table|task|tasklist|text color)\b
       captures:
         1: support.function.psy
